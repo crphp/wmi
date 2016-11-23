@@ -1,0 +1,27 @@
+{
+    "name": "crphp/wmi",
+    "type": "library",
+    "description": "Biblioteca wmi para gerenciamento remoto de máquinas Windows",
+    "keywords": ["wmi", "acesso remoto"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/crphp/wmi/issues",
+        "source": "https://github.com/crphp/wmi"
+    },
+    "authors": [
+        {
+            "name": "Fábio Jânio",
+            "email": "contato@fabiojanio.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.12",
+        "crphp/core": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Crphp\\Wmi\\": "src/"
+            }
+    },
+    "minimum-stability": "dev"
+}
