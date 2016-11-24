@@ -48,6 +48,7 @@ class MemoriaRam implements MemoriaRamInterface
     /**
      * Retorna o total de memória física livre e o percentual que este total representa
      * 
+     * @param boolean $emBytes
      * @return array
      */
     public function memoriaLivre($emBytes = false)
@@ -58,7 +59,7 @@ class MemoriaRam implements MemoriaRamInterface
         
         return [
             'livre' => $livre,
-            'percentualLivre' => sprintf("%0.2f%%", (100 * $livre / $this->memoriaTotal()))
+            'percentualLivre' => sprintf("%0.2f%%", (100 * $livre / $this->memoriaTotal($emBytes)))
         ];
     }
     
@@ -81,6 +82,7 @@ class MemoriaRam implements MemoriaRamInterface
     /**
      * Retorna o total de memória física
      * 
+     * @param boolean $emBytes
      * @return string
      */
     public function memoriaTotal($emBytes = false)
