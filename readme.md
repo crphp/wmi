@@ -31,7 +31,9 @@ As palavras-chave "DEVE", "NÃO DEVE", "REQUER", "DEVERIA", "NÃO DEVERIA", "POD
 - [x] Listar Serviços
 - [x] Stop / Start de serviço
 - [x] Listar processos
+- [x] Alterar prioridade do processo
 - [x] Matar / Finalizar processos
+- [x] Transformação de timestamp Windows para data/hora
 - [ ] Lançar processos
 - [ ] Listar e matar sessões
 
@@ -48,7 +50,7 @@ Servidor
 
 Cliente
 - REQUER Windows (desktop >= Windows 7 ou Windows Server >= 2003)
-- NÃO REQUER instalar nenhum componente
+- NÃO REQUER a instalação de nenhum componente
 
 ## 4 - <a id="configurando-o-servidor"></a>Configurando o servidor
 
@@ -164,6 +166,21 @@ if($wmi->status()) {
 ```
 
 > Você DEVE sempre instânciar o conector Wmi e a classe referente ao elemento que deseja manipular
+
+**Também é possível executar suas próprias consultas customizadas**
+```php
+use Crphp\Wmi\Conector\Wmi;
+
+$wmi = new Wmi;
+$wmi->conectar('ip_ou_hostname', 'usuario', 'senha');
+
+if($wmi->status()) {
+    $memoria = $wmi->executar("select AvailableBytes from Win32_PerfRawData_PerfOS_Memory");
+    // Será retornado um objeto em caso de sucesso ou uma string em caso de erro
+} else {
+    echo $wmi->mensagemErro();
+}
+```
 
 ## 8 - <a id="licenca">Licença (MIT)
 Para maiores informações, leia o arquivo de licença disponibilizado junto desta biblioteca.
