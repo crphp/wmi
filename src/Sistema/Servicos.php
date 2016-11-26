@@ -62,14 +62,13 @@ class Servicos implements ServicosInterface
     public function stopServico()
     {
         $code = [
-                    '0' => 'Comando enviado',
-                    '2' => 'O usuário não tem o acesso necessário',
-                    '3' => 'O serviço não pode ser interrompido porque outros serviços que estão sendo executados são dependentes deste',
-                    '5' => 'O serviço já está parado'
-                ];
+            '0' => 'Comando enviado',
+            '2' => 'O usuário não tem o acesso necessário',
+            '3' => 'O serviço não pode ser interrompido porque outros serviços que estão sendo executados são dependentes deste',
+            '5' => 'O serviço já está parado'
+        ];
         
         if(is_string($this->criterio) && !empty($this->criterio)) {
-            
             foreach ($this->servico as $s) {
                 $retorno = $s->StopService();
             }
@@ -86,15 +85,14 @@ class Servicos implements ServicosInterface
     public function startServico()
     {
         $code = [
-                    '0'  => 'Comando enviado',
-                    '2'  => 'O usuário não tem o acesso necessário',
-                    '6'  => 'Não foi possível iniciar o serviço',
-                    '8'  => 'Falha desconhecida ao iniciar o serviço',
-                    '10' => 'O serviço já está iniciado'
-                ];
+            '0'  => 'Comando enviado',
+            '2'  => 'O usuário não tem o acesso necessário',
+            '6'  => 'Não foi possível iniciar o serviço',
+            '8'  => 'Falha desconhecida ao iniciar o serviço',
+            '10' => 'O serviço já está iniciado'
+        ];
         
         if(is_string($this->criterio) && !empty($this->criterio)) {
-            
             foreach ($this->servico as $s) {
                 $retorno = $s->StartService();
             }
@@ -111,33 +109,31 @@ class Servicos implements ServicosInterface
     public function detalhes()
     {
         $langStatus = [
-                            'Stopped' => 'Parado',
-                            'Start Pending' => 'Iniciando',
-                            'Stop Pending' => 'Parando',
-                            'Running' => 'Iniciado',
-                            'Continue Pending' => 'Ação Pendente',
-                            'Pause Pending' => 'Pendente',
-                            'Paused' => 'Em Pausa',
-                            'Unknown' => 'Desconhecido'
-                      ];
+            'Stopped' => 'Parado',
+            'Start Pending' => 'Iniciando',
+            'Stop Pending' => 'Parando',
+            'Running' => 'Iniciado',
+            'Continue Pending' => 'Ação Pendente',
+            'Pause Pending' => 'Pendente',
+            'Paused' => 'Em Pausa',
+            'Unknown' => 'Desconhecido'
+        ];
         
-        $langMode =   [
-                            'Auto' => 'Automático',
-                            'Disabled' => 'Desativado'
-                      ];
+        $langMode = [
+            'Auto' => 'Automático',
+            'Disabled' => 'Desativado'
+        ];
         
-        foreach ($this->servico as $s)
-        {
+        foreach ($this->servico as $s) {
             $status = (array_key_exists($s->State, $langStatus)) ? $langStatus[$s->State] : $s->State;
             $statusMode = (array_key_exists($s->StartMode, $langMode)) ? $langMode[$s->StartMode] : $s->StartMode;
             
             $servico[] = [
-                            'nomeDoServico' => utf8_encode($s->Name),
-                            'nomeParaExibicao' => utf8_encode($s->Caption),
-                            'status' => $status,
-                            'inicializacao' => $statusMode
-                         ];
-            
+                'nomeDoServico' => utf8_encode($s->Name),
+                'nomeParaExibicao' => utf8_encode($s->Caption),
+                'status' => $status,
+                'inicializacao' => $statusMode
+            ];
         }
         
         return (isset($servico)) ? $servico : null;

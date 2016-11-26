@@ -74,9 +74,9 @@ class MemoriaRam implements MemoriaRamInterface
         $total = $this->memoriaTotal(true);
 
         return [
-                    'utilizado' => Transformar::converterBytes($total - $livre['livre']),
-                    'percentualUtilizado' => sprintf("%0.2f%%", (($total - $livre['livre']) * 100 / $total))
-               ];
+            'utilizado' => Transformar::converterBytes($total - $livre['livre']),
+            'percentualUtilizado' => sprintf("%0.2f%%", (($total - $livre['livre']) * 100 / $total))
+        ];
     }
 
     /**
@@ -103,11 +103,11 @@ class MemoriaRam implements MemoriaRamInterface
         $utilizada = $this->memoriaUtilizada();
         
         return [
-                    'livre' => $livre['livre'],
-                    'percentualLivre' => $livre['percentualLivre'],
-                    'utilizado' => $utilizada['utilizado'],
-                    'percentualUtilizado' => $utilizada['percentualUtilizado'],
-                    'memoriaTotal' => $this->memoriaTotal()
-               ];
+            'livre' => $livre['livre'],
+            'percentualLivre' => $livre['percentualLivre'],
+            'utilizado' => $utilizada['utilizado'],
+            'percentualUtilizado' => $utilizada['percentualUtilizado'],
+            'memoriaTotal' => $this->memoriaTotal()
+        ];
     }
 }

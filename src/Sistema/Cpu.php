@@ -54,15 +54,14 @@ class Cpu implements CpuInterface
     public function detalhes()
     {
         foreach ($this->cpu as $c) {
-            
             $cpu[$c->DeviceID] = [
-                                    'nome' => $c->Name,
-                                    'arquitetura' => $c->DataWidth,
-                                    'mhz' => $c->CurrentClockSpeed,
-                                    'nucleos' => $c->NumberOfCores,
-                                    'processadoresLogicos' => $c->NumberOfLogicalProcessors,
-                                    'cargaDoProcessador' => $c->LoadPercentage
-                                 ];
+                'nome' => $c->Name,
+                'arquitetura' => $c->DataWidth,
+                'mhz' => $c->CurrentClockSpeed,
+                'nucleos' => $c->NumberOfCores,
+                'processadoresLogicos' => $c->NumberOfLogicalProcessors,
+                'cargaDoProcessador' => $c->LoadPercentage
+            ];
         }
         
         return $cpu;

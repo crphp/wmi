@@ -55,16 +55,15 @@ class IpMac implements IpMacInterface
     public function detalhes()
     {
         foreach ($this->ipMac as $ipMac) {
-
             $interface[$ipMac->InterfaceIndex] = [
-                                                    'interfaceDeRede' => $ipMac->Description,
-                                                    'hostName' => $ipMac->DNSHostName,
-                                                    'ipv4' => (string) $ipMac->IPAddress[0],
-                                                    'ipv6' => (string) $ipMac->IPAddress[1],
-                                                    'ipSubnet' => (string) $ipMac->IPSubnet[0],
-                                                    'dominio' => $ipMac->DNSDomain,
-                                                    'dhcp' => ($ipMac->DHCPEnabled) ? 'Ativo' : 'Inativo',
-                                                 ];
+                'interfaceDeRede' => $ipMac->Description,
+                'hostName' => $ipMac->DNSHostName,
+                'ipv4' => (string) $ipMac->IPAddress[0],
+                'ipv6' => (string) $ipMac->IPAddress[1],
+                'ipSubnet' => (string) $ipMac->IPSubnet[0],
+                'dominio' => $ipMac->DNSDomain,
+                'dhcp' => ($ipMac->DHCPEnabled) ? 'Ativo' : 'Inativo',
+            ];
         }
         
         return $interface;

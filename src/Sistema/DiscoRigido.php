@@ -70,14 +70,13 @@ class DiscoRigido implements DiscoRigidoInterface
     public function espacoLivre()
     {
         foreach ($this->particoes as $p) {
-            
             $total = Transformar::converterBytes($p->FreeSpace);
             $percentual = sprintf("%0.2f%%", (100 * $p->FreeSpace / $p->Size));
             
             $particao[$p->Caption] = [
-                                        'total' => $total,
-                                        'percentual' => $percentual
-                                     ];
+                'total' => $total,
+                'percentual' => $percentual
+            ];
         }
         
         return $particao;
@@ -91,14 +90,13 @@ class DiscoRigido implements DiscoRigidoInterface
     public function espacoUtilizado()
     {
         foreach ($this->particoes as $p) {
-            
             $total = Transformar::converterBytes($p->Size - $p->FreeSpace);
             $percentual = sprintf("%0.2f%%", (100 * ($p->Size - $p->FreeSpace) / $p->Size));
             
             $particao[$p->Caption] = [
-                                        'total' => $total,
-                                        'percentual' => $percentual
-                                     ];
+                'total' => $total,
+                'percentual' => $percentual
+            ];
         }
         
         return $particao;
@@ -112,19 +110,18 @@ class DiscoRigido implements DiscoRigidoInterface
     public function detalhes()
     {
         foreach ($this->particoes as $p) {
-            
             $capacidade = $this->capacidade();
             $livre = $this->espacoLivre();
             $utilizado = $this->espacoUtilizado();
             
             $particao[$p->Caption] = [
-                                        'capacidade' => $capacidade[$p->Caption],
-                                        'espacoLivre' => $livre[$p->Caption]['total'],
-                                        'percentualLivre' => $livre[$p->Caption]['percentual'],
-                                        'espacoUtilizado' => $utilizado[$p->Caption]['total'],
-                                        'percentualUtilizado' => $utilizado[$p->Caption]['percentual'],
-                                        'sistemaDeArquivo' => $p->FileSystem
-                                     ];
+                'capacidade' => $capacidade[$p->Caption],
+                'espacoLivre' => $livre[$p->Caption]['total'],
+                'percentualLivre' => $livre[$p->Caption]['percentual'],
+                'espacoUtilizado' => $utilizado[$p->Caption]['total'],
+                'percentualUtilizado' => $utilizado[$p->Caption]['percentual'],
+                'sistemaDeArquivo' => $p->FileSystem
+            ];
         }
         
         return $particao;

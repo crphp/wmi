@@ -46,11 +46,13 @@ class Wmi extends Conector
             if (!$socket = @fsockopen($host, $porta, $errno, $errstr, $timeout)) {
                 // @see https://msdn.microsoft.com/en-us/library/windows/desktop/ms740668(v=vs.85).aspx
                 $dic = [
-                            10056 => "Já existe uma conexão socket aberta para o host <b>{$host}</b>!",
-                            10057 => "Não foi possível conectar ao socket na chamada do host <b>{$host}</b>!",
-                            10060 => "Time Out na chamada do host <b>{$host}</b>!",
-                            10061 => "O host <b>{$host}</b> recusou a conexão!",
-                        ];
+                    110   => "Time Out ao tentar se conectar ao destino: <b>{$host}</b>",
+                    113   => "Não existem rotas para o destino: <b>{$host}</b>",
+                    10056 => "Já existe uma conexão socket aberta para o host <b>{$host}</b>",
+                    10057 => "Não foi possível conectar ao socket na chamada do host <b>{$host}</b>",
+                    10060 => "Time Out ao tentar se conectar ao destino: <b>{$host}</b>",
+                    10061 => "Conexão recusada pelo destino: <b>{$host}</b>"
+                ];
 
                 $mensagem = (array_key_exists($errno, $dic)) ? strtr($errno, $dic) : $errstr;
 

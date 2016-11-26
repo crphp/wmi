@@ -29,7 +29,7 @@ class Processos implements ProcessosInterface
     /**
      * Critério de busca
      *
-     * @var string|int|null
+     * @var string|null
      */
     private $criterio;
     
@@ -75,7 +75,6 @@ class Processos implements ProcessosInterface
     public function killProcesso()
     {
         if($this->criterio != null) {
-            
             foreach ($this->instancia as $s) {
                 $retorno[] = $s->Terminate();
             }
@@ -95,14 +94,14 @@ class Processos implements ProcessosInterface
     public function alterarPrioridade($prioridade = null)
     {
         $resultado = [
-                        0  => 'Alteração efetuada com sucesso',
-                        2  => 'Acesso negado',
-                        3  => 'Privilégio insuficiente',
-                        8  => 'Erro desconhecido',
-                        9  => 'Caminho não encontrado',
-                        21 => 'Parâmetro inválido',
-                        '22-4294967295' => 'Retorno desconhecido'
-                     ];
+            0  => 'Alteração efetuada com sucesso',
+            2  => 'Acesso negado',
+            3  => 'Privilégio insuficiente',
+            8  => 'Erro desconhecido',
+            9  => 'Caminho não encontrado',
+            21 => 'Parâmetro inválido',
+            '22-4294967295' => 'Retorno desconhecido'
+        ];
         
         /*
          *  @see https://msdn.microsoft.com/en-us/library/aa393587(v=vs.85).aspx
@@ -118,7 +117,6 @@ class Processos implements ProcessosInterface
         $prioridadeExiste = in_array($prioridade, ['64', '16384', '32', '32768', '128', '256']);
                 
         if($this->criterio != null && $prioridadeExiste) {
-                        
             foreach ($this->instancia as $s) {
                 $retorno = [$s->setPriority($prioridade) => strtr($s->setPriority($prioridade), $resultado)];
             }
@@ -135,14 +133,13 @@ class Processos implements ProcessosInterface
     public function detalhes()
     {
         foreach ($this->instancia as $p) {
-            
             $processo[$p->ProcessId] = [
-                                            "nome" => $p->Name,
-                                            "Priority" => $p->Priority,
-                                            "memoriaTotal" => Transformar::converterBytes($p->WorkingSetSize),
-                                            "inicioDoProcesso" => Transformar::converterTimestamp($p->CreationDate),
-                                            "path" => $p->ExecutablePath
-                                       ];
+                "nome" => $p->Name,
+                "Priority" => $p->Priority,
+                "memoriaTotal" => Transformar::converterBytes($p->WorkingSetSize),
+                "inicioDoProcesso" => Transformar::converterTimestamp($p->CreationDate),
+                "path" => $p->ExecutablePath
+            ];
         }
         
         return (isset($processo)) ? $processo : null;
