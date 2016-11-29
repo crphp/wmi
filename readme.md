@@ -4,7 +4,7 @@ WMI** em máquinas Windows. Em outras palavras, essa biblioteca permite o gerenc
 máquinas Windows, dispensando a instalação de agentes e plugins nas máquinas clientes.
 
 >Caso sua intenção seja somente **consultar** os recursos de uma máquina remota, recomendo fortemente 
-que analise a possibilidade de ucar [crphp/wmic](https://github.com/crphp/wmic) em razão da performance.
+que analise a possibilidade de utilizar [crphp/wmic](https://github.com/crphp/wmic) em razão da performance.
 >
 >**crphp/wmi** e **crphp/wmic** possuem os mesmos recursos de consulta, porém, somente **crphp/wmi** 
 tem a capacidade de gerenciar recursos remotos, como parar serviços, matar processos etc.
