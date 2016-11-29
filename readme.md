@@ -3,6 +3,12 @@ Está é uma biblioteca que faz uso do **WQL (WMI Query Language)** para manipul
 WMI** em máquinas Windows. Em outras palavras, essa biblioteca permite o gerenciamento remoto de 
 máquinas Windows, dispensando a instalação de agentes e plugins nas máquinas clientes.
 
+>Caso sua intenção seja somente **consultar** os recursos de uma máquina remota, recomendo fortemente 
+que analise a possibilidade de ucar [crphp/wmic](https://github.com/crphp/wmic) em razão da performance.
+>
+>**crphp/wmi** e **crphp/wmic** possuem os mesmos recursos de consulta, porém, somente **crphp/wmi** 
+tem a capacidade de gerenciar recursos remotos, como parar serviços, matar processos etc.
+
 Está biblioteca segue os padrões descritos na [PSR-2](http://www.php-fig.org/psr/psr-2/), logo, 
 isso implica que a mesma está em conformidade com a [PSR-1](http://www.php-fig.org/psr/psr-1/).
 
@@ -28,8 +34,10 @@ As palavras-chave "DEVE", "NÃO DEVE", "REQUER", "DEVERIA", "NÃO DEVERIA", "POD
 - [x] Consultar CPU
 - [x] Consultar RAM
 - [x] Consultar Disco Rígido
+- [x] Consultar serviço
 - [x] Listar Serviços
 - [x] Stop / Start de serviço
+- [x] Consultar processo
 - [x] Listar processos
 - [x] Alterar prioridade do processo
 - [x] Matar / Finalizar processos
